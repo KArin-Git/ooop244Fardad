@@ -1,3 +1,10 @@
+//
+//  Student.cpp
+//  week6
+//
+//  Created by Bussarin Apichitchon on 4/6/2566 BE.
+//
+
 #include <iostream>
 #include <cstring>
 #include "student.h"
@@ -8,6 +15,10 @@ namespace sdds {
 
 Student::Student() {
     init();
+}
+
+Student::Student(const char* name) {
+    set(name);
 }
 
 Student::~Student() {
@@ -37,6 +48,8 @@ void Student::set() {
     } while(!done);
     cout << "Student number: ";
     cin >> stno;
+    //flush new line
+    cin.ignore(1000, '\n');
     set(name, stno);
 }
 
@@ -61,8 +74,6 @@ void Student::display()const {
 
 void Student::deallocate() {
     delete[] m_name;
-    // Always set to nullptr
-    m_name = nullptr;
 }
 
 }
