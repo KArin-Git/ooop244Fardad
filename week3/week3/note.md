@@ -40,3 +40,6 @@ Syntax:
     
     //to make sure that you won't have a memory leak
     delete[] nums;
+
+** after creating DMA >> set everything to zero >> init
+** after deallocated or deleting >> set pointer to nullptr (same as we do when using fopen / fclose >> set fptr = nullptr after close file)
