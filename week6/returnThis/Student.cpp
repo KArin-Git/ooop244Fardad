@@ -1,8 +1,8 @@
 //
 //  Student.cpp
-//  week6
+//  returnThis
 //
-//  Created by Bussarin Apichitchon on 4/6/2566 BE.
+//  Created by Bussarin Apichitchon on 5/6/2566 BE.
 //
 
 #include <iostream>
@@ -41,7 +41,7 @@ void Student::init() {
     m_stno = 0;
 }
 
-void Student::set() {
+Student& Student::set() {
     bool done = true;
     char name[51]{};
     unsigned int stno{};
@@ -62,19 +62,23 @@ void Student::set() {
     //flush new line
     cin.ignore(1000, '\n');
     set(name, stno);
+    return *this;
 }
 
-void Student::set(const char name[], unsigned int stno) {
+// MARK: return *this
+Student& Student::set(const char name[], unsigned int m_stno) {
     deallocate(); // prevent memory leak
     m_name = new char[strlen(name) + 1];
     strncpy(m_name, name, 50);
     m_name[50] = '\0';
-    m_stno = stno;
+    // FIXME: very bad thing to do, always use a different name for argument.
+    this->m_stno = m_stno;
+    return *this;
 }
 
-void Student::display()const {
+ostream& Student::display()const {
     if (m_name) {
-        cout << "Name: " << m_name << endl;
+        cout << "Name: " << m_name; // remove << endl; by using ostream& to return cout
         if (m_stno) {
             cout << "Student number: " << m_stno;
         }
@@ -84,8 +88,9 @@ void Student::display()const {
         cout << endl;
     }
     else {
-        cout << "name is invalid" << endl;
+        cout << "name is invalid"; // remove << endl;
     }
+    return cout;
 }
 
 void Student::deallocate() {

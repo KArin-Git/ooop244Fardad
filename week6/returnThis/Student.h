@@ -1,12 +1,15 @@
 //
 //  Student.hpp
-//  week6
+//  returnThis
 //
-//  Created by Bussarin Apichitchon on 4/6/2566 BE.
+//  Created by Bussarin Apichitchon on 5/6/2566 BE.
 //
 
 #ifndef SDDS_STUDENT_H
 #define SDDS_STUDENT_H
+
+#include <iostream>
+// ** because it is a header file we cannot using namespace
 
 namespace sdds {
 
@@ -32,13 +35,13 @@ public:
     ~Student();
     
     //receives the information from console
-    void set();
+    Student& set();
     
     // NOTE: stno = 0 >> default set BAD THING because logically when we have student name that should have stno too setting to default zero can make thing difficult
-    void set(const char name[], unsigned int stno = 0);
+    Student& set(const char name[], unsigned int stno = 0);
     
     // display information
-    void display()const;
+    std::ostream& display()const;
 };
 
 

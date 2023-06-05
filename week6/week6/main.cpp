@@ -6,35 +6,24 @@
 //
 
 #include <iostream>
-#include "student.h"
+#include "Student.h"
 
 using namespace std;
 using namespace sdds;
 
 int main(int argc, const char * argv[]) {
    
-    /*
-     Student S;
-     // S.init(); >> using constructor
-     S.display();
-     S.set("Arin Api", 1234);
-     S.display();
-     S.set();
-     S.display();
-     // S.deallocate(); >> using destructor
-     */
-    Student* S = new Student[3];
-    int i{};
-    
-    for (i = 0; i < 3; i++) {
-        S[i].set();
-    }
-    for (i = 0; i < 3; i++) {
-        cout << (i + 1) << ": ";
-        S[i].display();
-    }
-    
-    delete[] S;
+    // MARK: this is not assignment, it is an initialisation
+    // Student S = "Arin Api";
+    // Student S{"Arin Api"};
+    Student S("Arin Api");
+    Student R( 12345);
+    // Student L = {"Lisa Simpson", 9999};
+    // Student L{"Lisa Simpson", 9999};
+    Student L("Lisa Simpson", 9999);
+    S.display();
+    R.display();
+    L.display();
     
     return 0;
 }
